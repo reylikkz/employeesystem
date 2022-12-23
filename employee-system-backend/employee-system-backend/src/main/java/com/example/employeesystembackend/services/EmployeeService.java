@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// TODO: EmployeeService should be renamed to I_EmployeeService or EmployeeServiceInterface
+
 @Service
 public class EmployeeService implements EmployeeServiceInterface {
 
@@ -47,7 +47,6 @@ public class EmployeeService implements EmployeeServiceInterface {
 
     @Override
     public boolean deleteEmployee(Long id) {
-//        TODO: two queries run, SELECT and DELETE, should be replaced with DELETE only
         EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
 //        if (!employeeEntity) {
 //            return false

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// TODO: rename emailId to email, it is a field
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
