@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import EmployeeService from '../service/EmployeeService';
 
 const AddEmployee = () => {
@@ -31,7 +32,17 @@ const AddEmployee = () => {
             navigate("/employeeList");
         })
         .catch((error) => {
-            console.log(error)
+            toast.error('No empty fields allowed!', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: 1,
+                theme: "colored",
+                });
+            console.log(error);
         })
     }
 
@@ -91,7 +102,19 @@ const AddEmployee = () => {
                 onClick={reset}
                 className='rounded text-white font-semibold bg-red-400 hover:bg-red-700 py-2 px-6'>
                     Clear
-                </button>       
+                </button>     
+                <ToastContainer
+                position="bottom-center"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                />
             </div>
         </div>
     </div>

@@ -4,6 +4,8 @@ import AddEmployee from './components/AddEmployee';
 import EmployeeList from './components/EmployeeList';
 import Navbar from './components/Navbar';
 import UpdateEmployee from './components/UpdateEmployee';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
