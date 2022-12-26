@@ -33,7 +33,7 @@ const AddEmployee = () => {
         })
         .catch((error) => {
             console.log(error);
-            
+
             if (error.response.status === 422) { 
             toast.error('No empty fields allowed!', {
                 position: "bottom-center",
@@ -59,7 +59,6 @@ const AddEmployee = () => {
                     theme: "colored",
                     });
             }
-            console.log(error);
         })
     }
 
