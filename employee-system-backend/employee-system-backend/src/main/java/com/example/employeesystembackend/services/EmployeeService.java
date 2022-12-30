@@ -3,7 +3,6 @@ package com.example.employeesystembackend.services;
 import com.example.employeesystembackend.entity.EmployeeEntity;
 import com.example.employeesystembackend.model.Employee;
 import com.example.employeesystembackend.repository.EmployeeRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
