@@ -24,31 +24,19 @@ const UpdateEmployee = () => {
         .catch((error) => {
             console.log(error);
             
-            if (error.response.status === 422) { 
-                toast.error('No empty fields allowed!', {
-                    position: "bottom-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: 1,
-                    theme: "colored",
-                    });
-                }
-    
-                if (error.response.status === 500) {
-                    toast.error('Email already in use!', {
-                        position: "bottom-center",
-                        autoClose: 1000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: 1,
-                        theme: "colored",
-                        });
-                }
+            // error.response.status to identify each error
+
+            toast.error('Something went wrong!', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: 1,
+                theme: "colored",
+                });
+                
         }) 
     }
 

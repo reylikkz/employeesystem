@@ -2,6 +2,7 @@ package com.example.employeesystembackend.controller;
 
 import com.example.employeesystembackend.model.Employee;
 import com.example.employeesystembackend.services.EmployeeServiceInterface;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,8 @@ public class EmployeeController {
 
     // create employee
     @PostMapping("/employees")
-    public ResponseEntity<?> createEmployee(@RequestBody Employee employee) {
-        try {
-            return new ResponseEntity<>(employeeServiceInterface.createEmployee(employee), HttpStatus.CREATED);
-        } catch (ResponseStatusException e) {
-            // we get the custom message of the given error
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
-        }
+    public ResponseEntity<?> createEmployee(@RequestBody @Valid final Employee employee) {
+        return new ResponseEntity<>(employeeServiceInterface.createEmployee(employee), HttpStatus.CREATED);
     }
 
     // read employees
@@ -60,7 +56,7 @@ public class EmployeeController {
 
     // update employee
     @PutMapping("/employees/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable final Long id, @RequestBody final Employee employee) {
+    public ResponseEntity<Employee> updateEmployee(@PathVariable final Long id, @RequestBody @Valid final Employee employee) {
         return ResponseEntity.ok(employeeServiceInterface.updateEmployee(id, employee));
     }
 }

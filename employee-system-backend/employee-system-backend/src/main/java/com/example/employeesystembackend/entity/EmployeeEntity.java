@@ -13,6 +13,5 @@ public class EmployeeEntity {
     private long id;
     private String firstName;
     private String lastName;
-    @Column(unique = true)
     private String email;
 }

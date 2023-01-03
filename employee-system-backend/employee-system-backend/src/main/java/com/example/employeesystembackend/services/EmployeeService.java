@@ -4,9 +4,7 @@ import com.example.employeesystembackend.entity.EmployeeEntity;
 import com.example.employeesystembackend.model.Employee;
 import com.example.employeesystembackend.repository.EmployeeRepository;
 import org.springframework.beans.BeanUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,15 +18,8 @@ public class EmployeeService implements EmployeeServiceInterface {
         this.employeeRepository = employeeRepository;
     }
 
-    private void validateEmployeeRequest(Employee employee) {
-        if (employee.getFirstName().equals("") || employee.getLastName().equals("") || employee.getEmail().equals("")) {
-            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Field is required");
-        }
-    }
-
     @Override
     public Employee createEmployee(Employee employee) {
-        validateEmployeeRequest(employee);
         EmployeeEntity employeeEntity = new EmployeeEntity();
 
         BeanUtils.copyProperties(employee, employeeEntity);
@@ -72,7 +63,6 @@ public class EmployeeService implements EmployeeServiceInterface {
 
     @Override
     public Employee updateEmployee(Long id, Employee employee) {
-        validateEmployeeRequest(employee);
         EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
         employeeEntity.setEmail(employee.getEmail());
         employeeEntity.setFirstName(employee.getFirstName());
