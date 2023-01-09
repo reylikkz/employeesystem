@@ -26,16 +26,70 @@ const UpdateEmployee = () => {
             
             // error.response.status to identify each error
 
-            toast.error('Something went wrong!', {
-                position: "bottom-center",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: 1,
-                theme: "colored",
-                });
+            if(error.response.data.firstName) {
+                toast.error('First name should not be blank!', {
+                    position: "bottom-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "colored",
+                    });
+                }
+                
+                if(error.response.data.lastName) {
+                toast.error('Last name should not be blank!', {
+                    position: "bottom-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "colored",
+                    });
+                }
+    
+                if(error.response.data.email === "must be a well-formed email address") {
+                toast.error('Email is not well-formed!', {
+                    position: "bottom-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "colored",
+                    });
+                }
+    
+                if(error.response.data.email === "Email should not be blank!") {
+                toast.error('Email should not be blank!', {
+                    position: "bottom-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "colored",
+                    });
+                }
+    
+                if(error.response.data.Cause) {
+                toast.error('Email already in use!', {
+                    position: "bottom-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "colored",
+                    });
+                }
                 
         }) 
     }
