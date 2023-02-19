@@ -1,4 +1,4 @@
-package com.example.employeesystembackend.model;
+package com.example.employeesystembackend.dto;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Employee {
+public class EmployeeDto {
     private long id;
     @NotBlank(message = "First name should not be blank!")
     private String firstName;

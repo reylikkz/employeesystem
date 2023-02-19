@@ -1,7 +1,8 @@
 package com.example.employeesystembackend.controller;
 
-import com.example.employeesystembackend.model.Employee;
-import com.example.employeesystembackend.services.EmployeeServiceInterface;
+import com.example.employeesystembackend.entity.EmployeeEntity;
+import com.example.employeesystembackend.dto.EmployeeDto;
+import com.example.employeesystembackend.services.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,18 +18,18 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 public class EmployeeController {
     @Autowired
-    private EmployeeServiceInterface employeeServiceInterface;
+    private EmployeeService employeeService;
 
     // create employee
     @PostMapping("/employees")
-    public ResponseEntity<Employee> createEmployee(@RequestBody @Valid final Employee employee) {
-        return new ResponseEntity<>(employeeServiceInterface.createEmployee(employee), HttpStatus.CREATED);
+    public ResponseEntity<EmployeeEntity> createEmployee(@RequestBody @Valid final EmployeeDto employee) {
+        return new ResponseEntity<>(employeeService.createEmployee(employee), HttpStatus.CREATED);
     }
 
     // read employees
     @GetMapping("/employees")
-    public List<Employee> getAllEmployees() {
-        return employeeServiceInterface.getAllEmployees();
+    public List<EmployeeEntity> getAllEmployees() {
+        return employeeService.getAllEmployees();
     }
 
     // delete employee
@@ -36,7 +37,7 @@ public class EmployeeController {
     public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable final Long id) {
         boolean deleted = false;
         // return true if found
-        deleted = employeeServiceInterface.deleteEmployee(id);
+        deleted = employeeService.deleteEmployee(id);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", deleted);
         /*
@@ -49,13 +50,13 @@ public class EmployeeController {
 
     // get employee
     @GetMapping("/employees/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable final Long id) {
-        return ResponseEntity.ok(employeeServiceInterface.getEmployeeById(id));
+    public ResponseEntity<EmployeeEntity> getEmployeeById(@PathVariable final Long id) {
+        return ResponseEntity.ok(employeeService.getEmployeeById(id));
     }
 
     // update employee
     @PutMapping("/employees/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable final Long id, @RequestBody @Valid final Employee employee) {
-        return ResponseEntity.ok(employeeServiceInterface.updateEmployee(id, employee));
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable final Long id, @RequestBody @Valid final EmployeeDto employee) {
+        return ResponseEntity.ok(employeeService.updateEmployee(id, employee));
     }
 }
